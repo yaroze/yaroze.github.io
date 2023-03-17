@@ -1,0 +1,22 @@
+{
+  "ignition": {
+    "version": "3.3.0"
+  },
+  "passwd": {
+    "users": [
+      {
+        "groups": [
+          "wheel",
+          "plugdev"
+        ],
+        "homeDir": "/home/hydra",
+        "name": "hydra",
+        "noCreateHome": false,
+        "sshAuthorizedKeys": [
+          "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDFT+KltaYj+tVxS38u+pW5TPDBgmSyCF3yJAzP/eRRU/Mg3X9EGfy6/EvLX1ga+p0kmJ7nJgYiUqUSsEItLCpa741MWontL92JhEgZcOnHMeMCznig+yQkFhWJUZ6OnShEpHTpFxFVYdCzj3erP6/QTD550MSPYrqvOpQc0CBuP5UyCDGdsTk7t2hVoNwsVovbcEK1k9E4Wtam0oVVTB2Zf1xYV2W5GCevGMFy5bqZOR1akNwbdgirpbvbAJEf2f13BbQ9muwDiDCwMZukIooljoutHYgUELXLtpFK6RrACFa3DMs614N2q+HyBo0nWuzE59M7r3CmLXTF9Jhggvgj"
+        ],
+        "shell": "/bin/bash"
+      }
+    ]
+  }
+}
