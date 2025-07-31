@@ -8,7 +8,7 @@ This document outlines the deployment setup for Pedro Farinha's portfolio websit
 - **DNS**: Cloudflare with proxy and SSL termination
 - **Domain**: pedrofarinha.me with subdomains (www, me, i)
 - **CI/CD**: GitHub Actions for automated deployment
-- **Infrastructure**: Terraform for Cloudflare configuration
+- **Infrastructure**: OpenTofu for Cloudflare configuration
 
 ## Domains Configuration
 
@@ -43,7 +43,7 @@ Add the following secrets to your GitHub repository:
 CLOUDFLARE_API_TOKEN=Kopu7_PK3NmGeE0ZQ3GqzJmjuOVYvoWDK0EQfM3b
 ```
 
-### 3. Terraform Configuration
+### 3. OpenTofu Configuration
 
 1. Navigate to the `terraform/` directory
 2. Copy `terraform.tfvars.example` to `terraform.tfvars`
@@ -56,15 +56,15 @@ domain_name         = "pedrofarinha.me"
 github_repo_name    = "portfolio"
 ```
 
-### 4. Manual Terraform Deployment (Initial Setup)
+### 4. Manual OpenTofu Deployment (Initial Setup)
 
-For the initial setup, you may want to run Terraform manually:
+For the initial setup, you may want to run OpenTofu manually:
 
 ```bash
 cd terraform
-terraform init
-terraform plan
-terraform apply
+tofu init
+tofu plan
+tofu apply
 ```
 
 ### 5. GitHub Pages Configuration
@@ -82,7 +82,7 @@ The deployment process is fully automated via GitHub Actions:
 1. **Build**: Compile React app with Vite
 2. **Test**: Run Puppeteer tests locally
 3. **Deploy**: Deploy to GitHub Pages
-4. **Infrastructure**: Update Cloudflare DNS via Terraform
+4. **Infrastructure**: Update Cloudflare DNS via OpenTofu
 5. **Verify**: Test all domains with Puppeteer
 
 ### Manual Deployment
@@ -123,7 +123,7 @@ node .github/scripts/verify-domains.js
 
 ## DNS Configuration
 
-The Terraform configuration sets up:
+The OpenTofu configuration sets up:
 
 - **CNAME Records**: All domains point to GitHub Pages
 - **SSL/TLS**: Full SSL with minimum TLS 1.2
@@ -179,7 +179,7 @@ curl -I http://pedrofarinha.me
 The setup is designed to be low-maintenance:
 
 - **Automatic Deployments**: Triggered on git push to main
-- **Infrastructure as Code**: Terraform manages all DNS configuration
+- **Infrastructure as Code**: OpenTofu manages all DNS configuration
 - **Monitoring**: Automated testing verifies deployment health
 - **Updates**: Dependabot keeps dependencies current
 

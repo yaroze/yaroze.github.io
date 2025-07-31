@@ -104,10 +104,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v3
+      - name: Setup OpenTofu
+        uses: opentofu/setup-opentofu@v1
         with:
-          terraform_version: ~1.0
+          tofu_version: ~1.6
 
       - name: Create terraform.tfvars
         run: |
@@ -118,14 +118,14 @@ jobs:
           github_repo_name    = "${{ github.event.repository.name }}"
           EOF
 
-      - name: Terraform Init
-        run: terraform init
+      - name: OpenTofu Init
+        run: tofu init
 
-      - name: Terraform Plan
-        run: terraform plan -out=tfplan
+      - name: OpenTofu Plan
+        run: tofu plan -out=tfplan
 
-      - name: Terraform Apply
-        run: terraform apply -auto-approve tfplan
+      - name: OpenTofu Apply
+        run: tofu apply -auto-approve tfplan
 
   # Post-deployment verification
   verify:

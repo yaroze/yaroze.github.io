@@ -1,5 +1,5 @@
 terraform {
-  required_version = ">= 1.0"
+  required_version = ">= 1.6"
   required_providers {
     cloudflare = {
       source  = "cloudflare/cloudflare"
@@ -18,26 +18,28 @@ data "cloudflare_zone" "main" {
   name = "pedrofarinha.me"
 }
 
-# Root domain CNAME to GitHub Pages
+# Root domain CNAME to GitHub Pages (allow overwrite if exists)
 resource "cloudflare_record" "root" {
-  zone_id = data.cloudflare_zone.main.id
-  name    = "@"
-  type    = "CNAME"
-  content = "${var.github_username}.github.io"
-  proxied = true
-  ttl     = 1
-  comment = "Root domain pointing to GitHub Pages"
+  zone_id         = data.cloudflare_zone.main.id
+  name            = "@"
+  type            = "CNAME"
+  content         = "${var.github_username}.github.io"
+  proxied         = true
+  ttl             = 1
+  comment         = "Root domain pointing to GitHub Pages"
+  allow_overwrite = true
 }
 
-# www subdomain CNAME to GitHub Pages
+# www subdomain CNAME to GitHub Pages (allow overwrite if exists)
 resource "cloudflare_record" "www" {
-  zone_id = data.cloudflare_zone.main.id
-  name    = "www"
-  type    = "CNAME"
-  content = "${var.github_username}.github.io"
-  proxied = true
-  ttl     = 1
-  comment = "WWW subdomain pointing to GitHub Pages"
+  zone_id         = data.cloudflare_zone.main.id
+  name            = "www"
+  type            = "CNAME"
+  content         = "${var.github_username}.github.io"
+  proxied         = true
+  ttl             = 1
+  comment         = "WWW subdomain pointing to GitHub Pages"
+  allow_overwrite = true
 }
 
 # me subdomain CNAME to GitHub Pages
@@ -62,55 +64,12 @@ resource "cloudflare_record" "i" {
   comment = "I subdomain pointing to GitHub Pages"
 }
 
-# Page rule to redirect all HTTP to HTTPS
-resource "cloudflare_page_rule" "https_redirect" {
-  zone_id  = data.cloudflare_zone.main.id
-  target   = "*.pedrofarinha.me/*"
-  priority = 1
-
-  actions {
-    always_use_https = true
-  }
-}
-
-# SSL/TLS settings
-resource "cloudflare_zone_settings_override" "ssl_settings" {
-  zone_id = data.cloudflare_zone.main.id
-  settings {
-    ssl                      = "full"
-    always_use_https         = "on"
-    min_tls_version          = "1.2"
-    opportunistic_encryption = "on"
-    tls_1_3                  = "zrt"
-    automatic_https_rewrites = "on"
-    universal_ssl            = "on"
-  }
-}
-
-# Security settings
-resource "cloudflare_zone_settings_override" "security_settings" {
-  zone_id = data.cloudflare_zone.main.id
-  settings {
-    security_level         = "medium"
-    challenge_ttl          = 1800
-    browser_integrity_check = "on"
-    hotlink_protection     = "off"
-    ip_geolocation         = "on"
-  }
-}
-
-# Performance settings
-resource "cloudflare_zone_settings_override" "performance_settings" {
-  zone_id = data.cloudflare_zone.main.id
-  settings {
-    brotli               = "on"
-    minify {
-      css  = "on"
-      js   = "on"
-      html = "on"
-    }
-    rocket_loader        = "on"
-    mirage              = "on"
-    polish              = "lossless"
-  }
-}
+# Note: Page rules and zone settings require higher permission levels
+# These settings should be configured manually in the Cloudflare dashboard:
+# - Always Use HTTPS: ON
+# - SSL/TLS mode: Full
+# - Minimum TLS Version: 1.2
+# - Security Level: Medium
+# - Brotli compression: ON
+# - Auto Minify: CSS, JS, HTML
+# - Rocket Loader: ON

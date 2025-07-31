@@ -47,10 +47,10 @@ if ! command -v npm &> /dev/null; then
     exit 1
 fi
 
-# Check if terraform is installed
-if ! command -v terraform &> /dev/null; then
-    print_warning "Terraform is not installed. Install it from https://terraform.io"
-    print_warning "Terraform is required for DNS configuration."
+# Check if opentofu is installed
+if ! command -v tofu &> /dev/null; then
+    print_warning "OpenTofu is not installed. Install it from https://opentofu.org"
+    print_warning "OpenTofu is required for DNS configuration."
 fi
 
 print_status "Prerequisites check completed"
@@ -95,15 +95,15 @@ else
     print_status "terraform.tfvars already exists"
 fi
 
-# Initialize Terraform
-if command -v terraform &> /dev/null; then
-    print_step "Initializing Terraform..."
+# Initialize OpenTofu
+if command -v tofu &> /dev/null; then
+    print_step "Initializing OpenTofu..."
     cd terraform
-    terraform init
+    tofu init
     cd ..
-    print_status "Terraform initialized"
+    print_status "OpenTofu initialized"
 else
-    print_warning "Skipping Terraform initialization (terraform not installed)"
+    print_warning "Skipping OpenTofu initialization (tofu not installed)"
 fi
 
 # Test the build locally
@@ -151,13 +151,13 @@ echo "4. Enable GitHub Pages:"
 echo "   Go to: Settings → Pages"
 echo "   Set Source to: GitHub Actions"
 echo ""
-echo "5. Configure Terraform variables:"
+echo "5. Configure OpenTofu variables:"
 echo "   Edit terraform/terraform.tfvars with your actual values"
 echo ""
-echo "6. Run Terraform to set up DNS:"
+echo "6. Run OpenTofu to set up DNS:"
 echo "   cd terraform"
-echo "   terraform plan"
-echo "   terraform apply"
+echo "   tofu plan"
+echo "   tofu apply"
 echo ""
 echo "7. Trigger the GitHub Actions workflow:"
 echo "   Push to main branch or manually trigger the workflow"
