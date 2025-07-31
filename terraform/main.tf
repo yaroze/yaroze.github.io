@@ -18,16 +18,87 @@ data "cloudflare_zone" "main" {
   name = "pedrofarinha.me"
 }
 
-# Root domain CNAME to GitHub Pages (allow overwrite if exists)
-resource "cloudflare_record" "root" {
+# Root domain A records for GitHub Pages (IPv4)
+resource "cloudflare_record" "root_a1" {
   zone_id         = data.cloudflare_zone.main.id
   name            = "@"
-  type            = "CNAME"
-  content         = "${var.github_username}.github.io"
-  proxied         = true
-  ttl             = 1
-  comment         = "Root domain pointing to GitHub Pages"
+  type            = "A"
+  content         = "185.199.108.153"
+  proxied         = false
+  ttl             = 300
+  comment         = "GitHub Pages A record 1"
   allow_overwrite = true
+}
+
+resource "cloudflare_record" "root_a2" {
+  zone_id = data.cloudflare_zone.main.id
+  name    = "@"
+  type    = "A"
+  content = "185.199.109.153"
+  proxied = false
+  ttl     = 300
+  comment = "GitHub Pages A record 2"
+}
+
+resource "cloudflare_record" "root_a3" {
+  zone_id = data.cloudflare_zone.main.id
+  name    = "@"
+  type    = "A"
+  content = "185.199.110.153"
+  proxied = false
+  ttl     = 300
+  comment = "GitHub Pages A record 3"
+}
+
+resource "cloudflare_record" "root_a4" {
+  zone_id = data.cloudflare_zone.main.id
+  name    = "@"
+  type    = "A"
+  content = "185.199.111.153"
+  proxied = false
+  ttl     = 300
+  comment = "GitHub Pages A record 4"
+}
+
+# Root domain AAAA records for GitHub Pages (IPv6)
+resource "cloudflare_record" "root_aaaa1" {
+  zone_id = data.cloudflare_zone.main.id
+  name    = "@"
+  type    = "AAAA"
+  content = "2606:50c0:8000::153"
+  proxied = false
+  ttl     = 300
+  comment = "GitHub Pages AAAA record 1"
+}
+
+resource "cloudflare_record" "root_aaaa2" {
+  zone_id = data.cloudflare_zone.main.id
+  name    = "@"
+  type    = "AAAA"
+  content = "2606:50c0:8001::153"
+  proxied = false
+  ttl     = 300
+  comment = "GitHub Pages AAAA record 2"
+}
+
+resource "cloudflare_record" "root_aaaa3" {
+  zone_id = data.cloudflare_zone.main.id
+  name    = "@"
+  type    = "AAAA"
+  content = "2606:50c0:8002::153"
+  proxied = false
+  ttl     = 300
+  comment = "GitHub Pages AAAA record 3"
+}
+
+resource "cloudflare_record" "root_aaaa4" {
+  zone_id = data.cloudflare_zone.main.id
+  name    = "@"
+  type    = "AAAA"
+  content = "2606:50c0:8003::153"
+  proxied = false
+  ttl     = 300
+  comment = "GitHub Pages AAAA record 4"
 }
 
 # www subdomain CNAME to GitHub Pages (allow overwrite if exists)
@@ -36,8 +107,8 @@ resource "cloudflare_record" "www" {
   name            = "www"
   type            = "CNAME"
   content         = "${var.github_username}.github.io"
-  proxied         = true
-  ttl             = 1
+  proxied         = false
+  ttl             = 300
   comment         = "WWW subdomain pointing to GitHub Pages"
   allow_overwrite = true
 }
@@ -48,8 +119,8 @@ resource "cloudflare_record" "me" {
   name    = "me"
   type    = "CNAME"
   content = "${var.github_username}.github.io"
-  proxied = true
-  ttl     = 1
+  proxied = false
+  ttl     = 300
   comment = "Me subdomain pointing to GitHub Pages"
 }
 
@@ -59,8 +130,8 @@ resource "cloudflare_record" "i" {
   name    = "i"
   type    = "CNAME"
   content = "${var.github_username}.github.io"
-  proxied = true
-  ttl     = 1
+  proxied = false
+  ttl     = 300
   comment = "I subdomain pointing to GitHub Pages"
 }
 
