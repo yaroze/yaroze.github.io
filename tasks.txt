@@ -1,0 +1,17 @@
+I need you to create a professional terraform configuration for hosting my portfolio page on github pages.
+
+The domain to use should be pedrofarinha.me. there isn't anything running there at this time, meaning you can remove all records from cloudflare, except the ones for email.
+
+The portfolio should be exposed on me.pedrofarinha.me, i.pedrofarinha.me, pedrofarinha.me and www.pedrofarinha.me
+
+Ideally, it should be hosted by github pages or cloudflare pages, but if not, a cloud provider like aws can be used, as long as the portfolio is hosted on S3 buckets to have the lowest cost possible.
+
+Also, the portfolio website should be protected with TLS. TLS should be handled ideally by cloudflare.
+
+You are allowed to create a new repo on github to host this code. the repo should be private.
+
+There should be a github action that deploys the website. You can use puppeteer to make sure everything is working properly.
+
+Finally, the cloudflare api token you can use is: Kopu7_PK3NmGeE0ZQ3GqzJmjuOVYvoWDK0EQfM3b. This is a privileged-limited token that only gives you access to edit cloudflare records of pedrofarinha.me, but it shouldn't be public.
+
+You can use puppetter MCP to help you achieve these tasks.
