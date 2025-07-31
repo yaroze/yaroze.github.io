@@ -5,7 +5,7 @@ import { personalInfo, socialLinks } from '../utils/data';
 
 export const Hero = () => {
   const scrollToNextSection = () => {
-    const nextSection = document.getElementById('about');
+    const nextSection = document.getElementById('skills');
     nextSection?.scrollIntoView({ behavior: 'smooth' });
   };
 
@@ -23,7 +23,7 @@ export const Hero = () => {
   };
 
   return (
-    <section className="min-h-screen flex items-center justify-center relative bg-gradient-to-br from-blue-50 via-white to-indigo-50 dark:from-gray-900 dark:via-gray-800 dark:to-indigo-900">
+    <section id="hero" className="min-h-screen flex items-center justify-center relative bg-gradient-to-br from-blue-50 via-white to-indigo-50 dark:from-gray-900 dark:via-gray-800 dark:to-indigo-900">
       {/* Theme Toggle */}
       <div className="absolute top-6 right-6 z-10">
         <ThemeToggle />
