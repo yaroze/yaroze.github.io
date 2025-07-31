@@ -59,7 +59,7 @@ async function testDeployment() {
       if (themeToggle) {
         await themeToggle.click();
         console.log('✓ Theme toggle clicked successfully');
-        await page.waitForTimeout(1000); // Wait for theme transition
+        await new Promise(resolve => setTimeout(resolve, 1000)); // Wait for theme transition
       }
     } catch (error) {
       console.log('Theme toggle not found or not clickable (this is optional)');
@@ -67,11 +67,11 @@ async function testDeployment() {
 
     // Test 6: Check responsive design
     await page.setViewport({ width: 375, height: 667 }); // Mobile viewport
-    await page.waitForTimeout(1000);
+    await new Promise(resolve => setTimeout(resolve, 1000));
     console.log('✓ Mobile viewport test passed');
 
     await page.setViewport({ width: 1024, height: 768 }); // Desktop viewport
-    await page.waitForTimeout(1000);
+    await new Promise(resolve => setTimeout(resolve, 1000));
     console.log('✓ Desktop viewport test passed');
 
     // Test 7: Check for console errors
