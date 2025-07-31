@@ -101,38 +101,38 @@ resource "cloudflare_record" "root_aaaa4" {
   comment = "GitHub Pages AAAA record 4"
 }
 
-# www subdomain CNAME to GitHub Pages (allow overwrite if exists)
+# www subdomain CNAME to pedrofarinha.me (allow overwrite if exists)
 resource "cloudflare_record" "www" {
   zone_id         = data.cloudflare_zone.main.id
   name            = "www"
   type            = "CNAME"
-  content         = "${var.github_username}.github.io"
+  content         = "pedrofarinha.me"
   proxied         = false
   ttl             = 300
-  comment         = "WWW subdomain pointing to GitHub Pages"
+  comment         = "WWW subdomain pointing to pedrofarinha.me"
   allow_overwrite = true
 }
 
-# me subdomain CNAME to GitHub Pages
+# me subdomain CNAME to pedrofarinha.me
 resource "cloudflare_record" "me" {
   zone_id = data.cloudflare_zone.main.id
   name    = "me"
   type    = "CNAME"
-  content = "${var.github_username}.github.io"
+  content = "pedrofarinha.me"
   proxied = false
   ttl     = 300
-  comment = "Me subdomain pointing to GitHub Pages"
+  comment = "Me subdomain pointing to pedrofarinha.me"
 }
 
-# i subdomain CNAME to GitHub Pages
+# i subdomain CNAME to pedrofarinha.me
 resource "cloudflare_record" "i" {
   zone_id = data.cloudflare_zone.main.id
   name    = "i"
   type    = "CNAME"
-  content = "${var.github_username}.github.io"
+  content = "pedrofarinha.me"
   proxied = false
   ttl     = 300
-  comment = "I subdomain pointing to GitHub Pages"
+  comment = "I subdomain pointing to pedrofarinha.me"
 }
 
 # Note: Page rules and zone settings require higher permission levels
