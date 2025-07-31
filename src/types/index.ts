@@ -66,3 +66,19 @@ export interface SocialLink {
   url: string;
   icon: string;
 }
+
+export interface BlogPost {
+  id: string;
+  title: string;
+  date: string;
+  readTime: string;
+  summary: string;
+  content: string;
+  tags: string[];
+  category: string;
+  codeExamples?: {
+    language: string;
+    code: string;
+    description?: string;
+  }[];
+}

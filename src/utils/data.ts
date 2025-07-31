@@ -1,4 +1,4 @@
-import type { Experience, Project, Skill, Certification, Education, SocialLink } from '../types';
+import type { Experience, Project, Skill, Certification, Education, SocialLink, BlogPost } from '../types';
 
 export const personalInfo = {
   name: 'Pedro Farinha',
@@ -264,4 +264,90 @@ export const education: Education[] = [
     year: '2007-2011',
     field: 'Technologies and Information Systems',
   },
+];
+
+export const blogPosts: BlogPost[] = [
+  {
+    id: 'userspace-logrotate',
+    title: 'Userspace logrotate',
+    date: 'February 14, 2023',
+    readTime: 'Less than 1 minute',
+    summary: 'How to set up logrotate in a user\'s home directory with custom configuration for managing log files without root access.',
+    content: 'Setting up logrotate in userspace allows you to manage log rotation without root privileges. This guide covers the essential configuration files and scripts needed.',
+    tags: ['linux', 'logrotate', 'userspace', 'system-administration'],
+    category: 'tech',
+    codeExamples: [
+      {
+        language: 'bash',
+        code: '# Global settings\nweekly          # Run when\nrotate 4        # Keep only the last 4 rotated log files\ncreate          # Creates a new file\ninclude /etc/logrotate.d\n\n# Settings specific to a directory\n/var/log/wtmp {\n    monthly    # Run when\n    minsize 1M # File must be at least 1M to be rotated\n    create 0664 root utmp # Creates a new file with specific permissions&ownership\n    rotate 1 # Keep only the last rotated log file\n}',
+        description: 'Sample logrotate configuration'
+      },
+      {
+        language: 'bash',
+        code: '#!/bin/sh\n\n/usr/sbin/logrotate --state /home/user/logrotate/logrotate.state /home/user/logrotate/logrotate.conf\nEXITVALUE=$?\nif [ $EXITVALUE != 0 ]; then\n    /usr/bin/logger -t logrotate "ALERT exited abnormally with [$EXITVALUE]"\nfi\nexit 0',
+        description: 'Shell script to trigger logrotate'
+      }
+    ]
+  },
+  {
+    id: 'shrinking-pv-lvm',
+    title: 'Shrinking LVM PV partitions',
+    date: 'February 14, 2023',
+    readTime: '3 minutes',
+    summary: 'Step-by-step guide for safely shrinking LVM physical volume partitions, including filesystem checks and data movement.',
+    content: 'Shrinking LVM partitions requires careful planning and execution. This guide provides a comprehensive walkthrough with explicit commands and safety warnings.',
+    tags: ['linux', 'lvm', 'storage', 'partitions', 'system-administration'],
+    category: 'tech',
+    codeExamples: [
+      {
+        language: 'bash',
+        code: '# ⚠️ Always backup your data before proceeding!\n# ⚠️ Confirm commands before issuing them!\n\n# 1. Check filesystem\n# 2. Shrink the filesystem\n# 3. Resize the logical volume\n# 4. Resize the physical volume\n# 5. Move LVM segments if needed\n# 6. Resize partition using fdisk',
+        description: 'High-level steps for shrinking LVM partitions'
+      }
+    ]
+  },
+  {
+    id: 'sata-hotplug',
+    title: 'SATA hot plug/unplug',
+    date: 'February 14, 2023',
+    readTime: 'Less than 1 minute',
+    summary: 'Quick guide for safely hot-plugging and unplugging SATA devices in Linux systems without system restart.',
+    content: 'Hot-plugging SATA devices in Linux requires proper device management to avoid data loss or system instability.',
+    tags: ['ahci', 'linux', 'sata', 'storage', 'hardware'],
+    category: 'tech',
+    codeExamples: [
+      {
+        language: 'bash',
+        code: '# Unplug process:\n# 1. Unmount all filesystems\n# 2. Delete device\necho 1 > /sys/block/(device)/device/delete\n# 3. Physically remove device',
+        description: 'Safely unplugging a SATA device'
+      },
+      {
+        language: 'bash',
+        code: '# Hotplug - if host is known:\necho "- - -" > /sys/class/scsi_host/<hostN>/scan\n\n# If host is unknown, scan all:\ncd /sys/class/scsi_host/\nfor i in `ls -1`\ndo \n  echo "- - -" > $i/scan\ndone',
+        description: 'Hot-plugging a SATA device'
+      }
+    ]
+  },
+  {
+    id: 'recording-terminal-sessions',
+    title: 'Recording terminal sessions',
+    date: 'February 14, 2023',
+    readTime: '1 minute',
+    summary: 'How to record and playback terminal sessions using ttyrec, script, and other tools for documentation and troubleshooting.',
+    content: 'Recording terminal sessions is essential for documentation, training, and troubleshooting. This guide covers multiple tools and playback options.',
+    tags: ['linux', 'recording', 'screen', 'shell', 'documentation'],
+    category: 'tech',
+    codeExamples: [
+      {
+        language: 'bash',
+        code: '# Installation\nsudo apt install ttyrec\nsudo apt install script\nsudo apt install its-playback-time  # for rewinding',
+        description: 'Installing recording tools'
+      },
+      {
+        language: 'bash',
+        code: '# Playback commands\nttyplay <scriptfile>\nscriptreplay <scriptfile>\nipbt <scriptfile>  # for ttyrec with advanced features',
+        description: 'Playing back recorded sessions'
+      }
+    ]
+  }
 ];

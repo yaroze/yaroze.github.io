@@ -7,7 +7,7 @@ variable "cloudflare_api_token" {
 variable "github_username" {
   description = "GitHub username for GitHub Pages"
   type        = string
-  default     = "pedrofarinha"
+  default     = "yaroze"
 }
 
 variable "domain_name" {
@@ -19,6 +19,6 @@ variable "domain_name" {
 variable "github_repo_name" {
   description = "GitHub repository name for the portfolio"
   type        = string
-  default     = "portfolio"
+  default     = "yaroze.github.io"
 }
 
