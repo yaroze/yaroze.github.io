@@ -2,11 +2,11 @@ import type { Experience, Project, Skill, Certification, Education, SocialLink, 
 
 export const personalInfo = {
   name: 'Pedro Farinha',
-  title: 'Platform/DevOps Engineer',
+  title: 'Senior Platform/DevOps Engineer',
   location: 'Canada',
   email: 'plfarinha@gmail.com',
   phone: '+1 (306) 251-2611',
-  summary: 'Throughout my professional career, I had the opportunity to experience several roles and technologies, most of them as Systems and Database Administration, DevOps engineering and development. This heterogeneity provided me with valuable knowledge of working in large environments and different teams, and has provided me valuable skills and knowledge to improve important collaborations between the infrastructures and development teams.',
+  summary: 'Senior Platform and DevOps Engineer with extensive experience in cloud infrastructure, system administration, and database management. Specialized in building scalable, secure, and automated solutions across diverse enterprise environments. Proven track record of leading technical teams, optimizing infrastructure costs, and implementing robust CI/CD pipelines that enhance collaboration between development and operations teams.',
   availability: 'Available for consulting',
 };
 
