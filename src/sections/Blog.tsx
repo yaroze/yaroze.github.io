@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Calendar, Clock, Tag, Code, ChevronDown, ChevronUp } from 'lucide-react';
 import { blogPosts } from '../utils/data';
 
