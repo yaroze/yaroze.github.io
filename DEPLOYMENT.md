@@ -6,17 +6,17 @@ This document outlines the deployment setup for Pedro Farinha's portfolio websit
 
 - **Hosting**: GitHub Pages (free tier)
 - **DNS**: Cloudflare with proxy and SSL termination
-- **Domain**: pedrofarinha.me with subdomains (www, me, i)
+- **Domain**: Custom domain with subdomains (www, me, i)
 - **CI/CD**: GitHub Actions for automated deployment
 - **Infrastructure**: OpenTofu for Cloudflare configuration
 
 ## Domains Configuration
 
 The portfolio is accessible via multiple domains:
-- `pedrofarinha.me` (primary)
-- `www.pedrofarinha.me`
-- `me.pedrofarinha.me`
-- `i.pedrofarinha.me`
+- `your-domain.com` (primary)
+- `www.your-domain.com`
+- `me.your-domain.com`
+- `i.your-domain.com`
 
 All domains redirect to HTTPS and are proxied through Cloudflare for performance and security.
 
@@ -40,7 +40,7 @@ All domains redirect to HTTPS and are proxied through Cloudflare for performance
 Add the following secrets to your GitHub repository:
 
 ```
-CLOUDFLARE_API_TOKEN=Kopu7_PK3NmGeE0ZQ3GqzJmjuOVYvoWDK0EQfM3b
+CLOUDFLARE_API_TOKEN=your_cloudflare_api_token_here
 ```
 
 ### 3. OpenTofu Configuration
@@ -50,10 +50,10 @@ CLOUDFLARE_API_TOKEN=Kopu7_PK3NmGeE0ZQ3GqzJmjuOVYvoWDK0EQfM3b
 3. Fill in the required values:
 
 ```hcl
-cloudflare_api_token = "Kopu7_PK3NmGeE0ZQ3GqzJmjuOVYvoWDK0EQfM3b"
-github_username     = "pedrofarinha"
-domain_name         = "pedrofarinha.me"
-github_repo_name    = "portfolio"
+cloudflare_api_token = "your_cloudflare_api_token_here"
+github_username     = "your_github_username"
+domain_name         = "your-domain.com"
+github_repo_name    = "your_repo_name"
 ```
 
 ### 4. Manual OpenTofu Deployment (Initial Setup)
@@ -143,14 +143,14 @@ The OpenTofu configuration sets up:
 
 ```bash
 # Check DNS resolution
-dig pedrofarinha.me
-dig www.pedrofarinha.me
+dig your-domain.com
+dig www.your-domain.com
 
 # Check SSL certificate
-openssl s_client -connect pedrofarinha.me:443 -servername pedrofarinha.me
+openssl s_client -connect your-domain.com:443 -servername your-domain.com
 
 # Test HTTP to HTTPS redirect
-curl -I http://pedrofarinha.me
+curl -I http://your-domain.com
 ```
 
 ## Security Considerations

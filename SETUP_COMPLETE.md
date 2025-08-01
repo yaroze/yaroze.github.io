@@ -13,10 +13,10 @@ Your professional portfolio infrastructure has been successfully configured and 
 ### 2. Infrastructure as Code (OpenTofu)
 - **DNS Configuration**: All domains configured to point to GitHub Pages
 - **Domains Configured**:
-  - `pedrofarinha.me` (primary)
-  - `www.pedrofarinha.me`
-  - `me.pedrofarinha.me`
-  - `i.pedrofarinha.me`
+  - `your-domain.com` (primary)
+  - `www.your-domain.com`
+  - `me.your-domain.com`
+  - `i.your-domain.com`
 - **SSL/TLS**: Handled by Cloudflare with full encryption
 
 ### 3. Automated Deployment Pipeline
@@ -37,10 +37,10 @@ Your professional portfolio infrastructure has been successfully configured and 
 ## 🚀 Current Status
 
 ### DNS Records Applied
-- ✅ `me.pedrofarinha.me` → GitHub Pages
-- ✅ `i.pedrofarinha.me` → GitHub Pages
-- ⏳ `pedrofarinha.me` → GitHub Pages (in progress)
-- ⏳ `www.pedrofarinha.me` → GitHub Pages (in progress)
+- ✅ `me.your-domain.com` → GitHub Pages
+- ✅ `i.your-domain.com` → GitHub Pages
+- ⏳ `your-domain.com` → GitHub Pages (in progress)
+- ⏳ `www.your-domain.com` → GitHub Pages (in progress)
 
 ### Deployment Status
 - ✅ GitHub repository created and configured
@@ -53,10 +53,10 @@ Your professional portfolio infrastructure has been successfully configured and 
 
 Once DNS propagation is complete (within 24-48 hours), your portfolio will be accessible at:
 
-- **Primary**: https://pedrofarinha.me
-- **WWW**: https://www.pedrofarinha.me
-- **Me**: https://me.pedrofarinha.me
-- **Info**: https://i.pedrofarinha.me
+- **Primary**: https://your-domain.com
+- **WWW**: https://www.your-domain.com
+- **Me**: https://me.your-domain.com
+- **Info**: https://i.your-domain.com
 
 ## 📋 Immediate Next Steps
 
@@ -72,8 +72,8 @@ gh run list --workflow=deploy.yml
 Test domain resolution:
 ```bash
 # Check DNS records
-dig pedrofarinha.me
-dig www.pedrofarinha.me
+dig your-domain.com
+dig www.your-domain.com
 ```
 
 ### 3. Manual Cloudflare Settings
@@ -166,7 +166,7 @@ Your portfolio is now:
 1. **Wait for DNS propagation** (24-48 hours)
 2. **Test all domains** once propagation completes
 3. **Update LinkedIn** with your new portfolio URL
-4. **Share** your professional portfolio: https://pedrofarinha.me
+4. **Share** your professional portfolio: https://your-domain.com
 
 ---
 

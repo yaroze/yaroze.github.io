@@ -115,7 +115,7 @@ jobs:
           cat > terraform.tfvars << EOF
           cloudflare_api_token = "${{ secrets.CLOUDFLARE_API_TOKEN }}"
           github_username     = "${{ github.repository_owner }}"
-          domain_name         = "pedrofarinha.me"
+          domain_name         = "${{ vars.DOMAIN_NAME || 'pedrofarinha.me' }}"
           github_repo_name    = "${{ github.event.repository.name }}"
           EOF
 

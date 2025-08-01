@@ -28,10 +28,25 @@ print_step() {
     echo -e "${BLUE}[STEP]${NC} $1"
 }
 
-# Configuration
-API_TOKEN="Kopu7_PK3NmGeE0ZQ3GqzJmjuOVYvoWDK0EQfM3b"
-ZONE_NAME="pedrofarinha.me"
-ZONE_ID="60f735e49d6acb9f990493b5b5df47ad"
+# Configuration - Set these environment variables before running
+API_TOKEN="${CLOUDFLARE_API_TOKEN}"
+ZONE_NAME="${DOMAIN_NAME}"
+ZONE_ID="${CLOUDFLARE_ZONE_ID}"
+
+if [ -z "$CLOUDFLARE_API_TOKEN" ]; then
+    print_error "CLOUDFLARE_API_TOKEN environment variable is required"
+    exit 1
+fi
+
+if [ -z "$DOMAIN_NAME" ]; then
+    print_error "DOMAIN_NAME environment variable is required"
+    exit 1
+fi
+
+if [ -z "$CLOUDFLARE_ZONE_ID" ]; then
+    print_error "CLOUDFLARE_ZONE_ID environment variable is required"
+    exit 1
+fi
 
 echo "🧹 Cleaning up DNS records for ${ZONE_NAME}"
 echo "=============================================="

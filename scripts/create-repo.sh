@@ -72,8 +72,15 @@ fi
 # Add GitHub secrets
 print_step "Adding GitHub repository secrets..."
 
-# Cloudflare API token
-echo "Kopu7_PK3NmGeE0ZQ3GqzJmjuOVYvoWDK0EQfM3b" | gh secret set CLOUDFLARE_API_TOKEN
+# Cloudflare API token - use environment variable
+if [ -z "$CLOUDFLARE_API_TOKEN" ]; then
+    print_error "CLOUDFLARE_API_TOKEN environment variable is required"
+    print_error "Please set it before running this script:"
+    print_error "export CLOUDFLARE_API_TOKEN=your_token_here"
+    exit 1
+fi
+
+echo "$CLOUDFLARE_API_TOKEN" | gh secret set CLOUDFLARE_API_TOKEN
 
 print_status "Repository secrets added successfully"
 
@@ -199,9 +206,9 @@ echo "   - Wait for DNS propagation (up to 48 hours)"
 echo "   - Test domains: npm run test:domains"
 echo ""
 echo "4. 📊 Your portfolio will be available at:"
-echo "   - https://pedrofarinha.me"
-echo "   - https://www.pedrofarinha.me"
-echo "   - https://me.pedrofarinha.me"
-echo "   - https://i.pedrofarinha.me"
+echo "   - https://your-domain.com"
+echo "   - https://www.your-domain.com"
+echo "   - https://me.your-domain.com"
+echo "   - https://i.your-domain.com"
 echo ""
 print_status "Happy deploying! 🚀"

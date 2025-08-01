@@ -1,11 +1,12 @@
 import puppeteer from 'puppeteer';
 
 async function verifyDomains() {
+  const baseDomain = process.env.DOMAIN_NAME || 'your-domain.com';
   const domains = [
-    'https://pedrofarinha.me',
-    'https://www.pedrofarinha.me',
-    'https://me.pedrofarinha.me',
-    'https://i.pedrofarinha.me'
+    `https://${baseDomain}`,
+    `https://www.${baseDomain}`,
+    `https://me.${baseDomain}`,
+    `https://i.${baseDomain}`
   ];
 
   const browser = await puppeteer.launch({
