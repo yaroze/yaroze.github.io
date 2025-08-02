@@ -4,13 +4,14 @@ import { Skills } from './sections/Skills';
 import { Projects } from './sections/Projects';
 import { Experience } from './sections/Experience';
 import { Education } from './sections/Education';
-import { Blog } from './sections/Blog';
 import { Contact } from './sections/Contact';
+import { BlogModal } from './components/BlogModal';
 
 type TabType = 'overview' | 'experience' | 'projects' | 'blog' | 'contact';
 
 function App() {
   const [activeTab, setActiveTab] = useState<TabType>('overview');
+  const [showBlogModal, setShowBlogModal] = useState(false);
 
   const tabs = [
     { id: 'overview' as const, label: 'Overview' },
@@ -19,6 +20,20 @@ function App() {
     { id: 'blog' as const, label: 'Blog' },
     { id: 'contact' as const, label: 'Contact' },
   ];
+
+  const scrollToContent = () => {
+    const contentSection = document.querySelector('main');
+    contentSection?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  const handleTabClick = (tabId: TabType) => {
+    if (tabId === 'blog') {
+      setShowBlogModal(true);
+    } else {
+      setActiveTab(tabId);
+      scrollToContent();
+    }
+  };
 
   const renderContent = () => {
     switch (activeTab) {
@@ -34,7 +49,7 @@ function App() {
       case 'projects':
         return <Projects />;
       case 'blog':
-        return <Blog />;
+        return null;
       case 'contact':
         return <Contact />;
       default:
@@ -52,9 +67,9 @@ function App() {
               {tabs.map((tab) => (
                 <button
                   key={tab.id}
-                  onClick={() => setActiveTab(tab.id)}
+                  onClick={() => handleTabClick(tab.id)}
                   className={`px-6 py-3 rounded-xl font-semibold whitespace-nowrap transition-all duration-300 transform hover:scale-105 ${
-                    activeTab === tab.id
+                    activeTab === tab.id && tab.id !== 'blog'
                       ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-xl'
                       : 'text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-white/50 dark:hover:bg-gray-600/50'
                   }`}
@@ -94,6 +109,11 @@ function App() {
           </div>
         </div>
       </footer>
+
+      <BlogModal 
+        isOpen={showBlogModal} 
+        onClose={() => setShowBlogModal(false)} 
+      />
     </div>
   );
 }
