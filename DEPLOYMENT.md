@@ -1,22 +1,22 @@
 # Portfolio Deployment Guide
 
-This document outlines the deployment setup for Pedro Farinha's portfolio website using GitHub Pages and Cloudflare.
+This document outlines the deployment setup for a DevOps Engineer portfolio website using GitHub Pages and Cloudflare.
 
 ## Architecture Overview
 
 - **Hosting**: GitHub Pages (free tier)
 - **DNS**: Cloudflare with proxy and SSL termination
-- **Domain**: pedrofarinha.me with subdomains (www, me, i)
+- **Domain**: example.com with subdomains (www, me, i)
 - **CI/CD**: GitHub Actions for automated deployment
 - **Infrastructure**: OpenTofu for Cloudflare configuration
 
 ## Domains Configuration
 
 The portfolio is accessible via multiple domains:
-- `pedrofarinha.me` (primary)
-- `www.pedrofarinha.me`
-- `me.pedrofarinha.me`
-- `i.pedrofarinha.me`
+- `example.com` (primary)
+- `www.example.com`
+- `me.example.com`
+- `i.example.com`
 
 All domains redirect to HTTPS and are proxied through Cloudflare for performance and security.
 
@@ -51,8 +51,8 @@ CLOUDFLARE_API_TOKEN=Kopu7_PK3NmGeE0ZQ3GqzJmjuOVYvoWDK0EQfM3b
 
 ```hcl
 cloudflare_api_token = "Kopu7_PK3NmGeE0ZQ3GqzJmjuOVYvoWDK0EQfM3b"
-github_username     = "pedrofarinha"
-domain_name         = "pedrofarinha.me"
+github_username     = "username"
+domain_name         = "example.com"
 github_repo_name    = "portfolio"
 ```
 
@@ -143,14 +143,14 @@ The OpenTofu configuration sets up:
 
 ```bash
 # Check DNS resolution
-dig pedrofarinha.me
-dig www.pedrofarinha.me
+dig example.com
+dig www.example.com
 
 # Check SSL certificate
-openssl s_client -connect pedrofarinha.me:443 -servername pedrofarinha.me
+openssl s_client -connect example.com:443 -servername example.com
 
 # Test HTTP to HTTPS redirect
-curl -I http://pedrofarinha.me
+curl -I http://example.com
 ```
 
 ## Security Considerations

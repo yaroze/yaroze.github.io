@@ -17,11 +17,11 @@ async function testDeployment() {
       timeout: 30000 
     });
 
-    // Test 1: Check if the page title contains Pedro's name
+    // Test 1: Check if the page title contains expected content
     const title = await page.title();
     console.log(`Page title: ${title}`);
-    if (!title.includes('Pedro') && !title.includes('Farinha')) {
-      throw new Error('Page title does not contain expected name');
+    if (!title.includes('DevOps') && !title.includes('Engineer')) {
+      throw new Error('Page title does not contain expected content');
     }
 
     // Test 2: Check if tab navigation is present
@@ -83,10 +83,10 @@ async function testDeployment() {
         await tabButtons[4].click();
         await new Promise(resolve => setTimeout(resolve, 1000));
         const contactContent = await page.$eval('body', el => el.textContent);
-        if (contactContent.includes('plfarinha@gmail.com')) {
-          console.log('✓ Contact email found');
+        if (contactContent.includes('Get In Touch')) {
+          console.log('✓ Contact section found');
         } else {
-          console.warn('Warning: Contact email not found in Contact tab');
+          console.warn('Warning: Contact section not found in Contact tab');
         }
       }
     } catch (error) {

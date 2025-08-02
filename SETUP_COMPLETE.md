@@ -13,10 +13,10 @@ Your professional portfolio infrastructure has been successfully configured and 
 ### 2. Infrastructure as Code (OpenTofu)
 - **DNS Configuration**: All domains configured to point to GitHub Pages
 - **Domains Configured**:
-  - `pedrofarinha.me` (primary)
-  - `www.pedrofarinha.me`
-  - `me.pedrofarinha.me`
-  - `i.pedrofarinha.me`
+  - Primary domain (configured)
+  - WWW subdomain
+  - Me subdomain
+  - Info subdomain
 - **SSL/TLS**: Handled by Cloudflare with full encryption
 
 ### 3. Automated Deployment Pipeline
@@ -30,17 +30,17 @@ Your professional portfolio infrastructure has been successfully configured and 
 - **Responsive Design**: Mobile and desktop optimized
 - **Dark/Light Theme**: System preference detection
 - **Professional Content**: Updated with your LinkedIn data
-- **Contact Information**: plfarinha@gmail.com
+- **Contact Information**: Contact form available
 - **Skills**: Current tech stack (AWS, Kubernetes, Docker, etc.)
 - **Experience**: Complete work history from LinkedIn
 
 ## 🚀 Current Status
 
 ### DNS Records Applied
-- ✅ `me.pedrofarinha.me` → GitHub Pages
-- ✅ `i.pedrofarinha.me` → GitHub Pages
-- ⏳ `pedrofarinha.me` → GitHub Pages (in progress)
-- ⏳ `www.pedrofarinha.me` → GitHub Pages (in progress)
+- ✅ Me subdomain → GitHub Pages
+- ✅ Info subdomain → GitHub Pages
+- ⏳ Primary domain → GitHub Pages (in progress)
+- ⏳ WWW subdomain → GitHub Pages (in progress)
 
 ### Deployment Status
 - ✅ GitHub repository created and configured
@@ -51,12 +51,7 @@ Your professional portfolio infrastructure has been successfully configured and 
 
 ## 🌐 Your Portfolio URLs
 
-Once DNS propagation is complete (within 24-48 hours), your portfolio will be accessible at:
-
-- **Primary**: https://pedrofarinha.me
-- **WWW**: https://www.pedrofarinha.me
-- **Me**: https://me.pedrofarinha.me
-- **Info**: https://i.pedrofarinha.me
+Once DNS propagation is complete (within 24-48 hours), your portfolio will be accessible at the configured domains.
 
 ## 📋 Immediate Next Steps
 
@@ -71,9 +66,9 @@ gh run list --workflow=deploy.yml
 ### 2. Verify DNS Propagation
 Test domain resolution:
 ```bash
-# Check DNS records
-dig pedrofarinha.me
-dig www.pedrofarinha.me
+# Check DNS records for your configured domains
+dig [your-domain]
+dig www.[your-domain]
 ```
 
 ### 3. Manual Cloudflare Settings
@@ -166,7 +161,7 @@ Your portfolio is now:
 1. **Wait for DNS propagation** (24-48 hours)
 2. **Test all domains** once propagation completes
 3. **Update LinkedIn** with your new portfolio URL
-4. **Share** your professional portfolio: https://pedrofarinha.me
+4. **Share** your professional portfolio at your configured domain
 
 ---
 

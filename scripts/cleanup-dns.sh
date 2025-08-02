@@ -30,7 +30,7 @@ print_step() {
 
 # Configuration
 API_TOKEN="Kopu7_PK3NmGeE0ZQ3GqzJmjuOVYvoWDK0EQfM3b"
-ZONE_NAME="pedrofarinha.me"
+ZONE_NAME="example.com"
 ZONE_ID="60f735e49d6acb9f990493b5b5df47ad"
 
 echo "🧹 Cleaning up DNS records for ${ZONE_NAME}"

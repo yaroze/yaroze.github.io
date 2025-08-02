@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Mail, Phone, MapPin, Send, CheckCircle, AlertCircle } from 'lucide-react';
+import { Mail, MapPin, Send, CheckCircle, AlertCircle } from 'lucide-react';
 import { FaLinkedin, FaGithub } from 'react-icons/fa';
 import type { ContactFormData } from '../types';
 import { personalInfo, socialLinks } from '../utils/data';
@@ -30,17 +30,27 @@ export const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simulate form submission
     try {
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      setSubmitStatus('success');
-      setFormData({
-        name: '',
-        email: '',
-        company: '',
-        message: '',
-        type: 'consulting',
+      const response = await fetch('https://formspree.io/f/xdkogkvo', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
       });
+      
+      if (response.ok) {
+        setSubmitStatus('success');
+        setFormData({
+          name: '',
+          email: '',
+          company: '',
+          message: '',
+          type: 'consulting',
+        });
+      } else {
+        throw new Error('Form submission failed');
+      }
     } catch {
       setSubmitStatus('error');
     } finally {
@@ -84,36 +94,6 @@ export const Contact = () => {
 
             {/* Contact Details */}
             <div className="space-y-6 mb-8">
-              <div className="flex items-center">
-                <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center mr-4">
-                  <Mail className="w-6 h-6 text-blue-600 dark:text-blue-400" />
-                </div>
-                <div>
-                  <h4 className="font-semibold text-gray-900 dark:text-white">Email</h4>
-                  <a
-                    href={`mailto:${personalInfo.email}`}
-                    className="text-blue-600 dark:text-blue-400 hover:underline"
-                  >
-                    {personalInfo.email}
-                  </a>
-                </div>
-              </div>
-
-              <div className="flex items-center">
-                <div className="w-12 h-12 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center mr-4">
-                  <Phone className="w-6 h-6 text-green-600 dark:text-green-400" />
-                </div>
-                <div>
-                  <h4 className="font-semibold text-gray-900 dark:text-white">Phone</h4>
-                  <a
-                    href={`tel:${personalInfo.phone}`}
-                    className="text-green-600 dark:text-green-400 hover:underline"
-                  >
-                    {personalInfo.phone}
-                  </a>
-                </div>
-              </div>
-
               <div className="flex items-center">
                 <div className="w-12 h-12 bg-purple-100 dark:bg-purple-900 rounded-full flex items-center justify-center mr-4">
                   <MapPin className="w-6 h-6 text-purple-600 dark:text-purple-400" />

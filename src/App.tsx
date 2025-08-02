@@ -79,14 +79,14 @@ function App() {
         <div className="container mx-auto px-6 text-center">
           <div className="mb-6">
             <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-br from-blue-500 via-indigo-600 to-purple-700 flex items-center justify-center text-white text-2xl font-bold shadow-xl">
-              PF
+              DE
             </div>
-            <h3 className="text-2xl font-bold text-white mb-2">Pedro Lucas Farinha</h3>
+            <h3 className="text-2xl font-bold text-white mb-2">DevOps Engineer</h3>
             <p className="text-blue-200">Senior AI/DevOps Engineer</p>
           </div>
           <div className="border-t border-white/20 pt-6">
             <p className="text-blue-100">
-              © 2024 Pedro Lucas Farinha. Built with React, TypeScript, and Tailwind CSS.
+              © 2024 DevOps Engineer Portfolio. Built with React, TypeScript, and Tailwind CSS.
             </p>
             <p className="text-blue-200 text-sm mt-2">
               Transforming infrastructure through AI-driven DevOps solutions

@@ -1,11 +1,9 @@
 import type { Experience, Project, Skill, Certification, Education, SocialLink, BlogPost } from '../types';
 
 export const personalInfo = {
-  name: 'Pedro Farinha',
+  name: 'DevOps Engineer',
   title: 'Platform/DevOps Engineer',
   location: 'Canada',
-  email: 'plfarinha@gmail.com',
-  phone: '+1 (306) 251-2611',
   summary: 'Throughout my professional career, I had the opportunity to experience several roles and technologies, most of them as Systems and Database Administration, DevOps engineering and development. This heterogeneity provided me with valuable knowledge of working in large environments and different teams, and has provided me valuable skills and knowledge to improve important collaborations between the infrastructures and development teams.',
   availability: 'Available for consulting',
 };
@@ -14,20 +12,14 @@ export const socialLinks: SocialLink[] = [
   {
     id: 'linkedin',
     name: 'LinkedIn',
-    url: 'https://www.linkedin.com/in/plfarinha',
+    url: 'https://www.linkedin.com/in/devops-engineer',
     icon: 'FaLinkedin',
   },
   {
     id: 'github',
     name: 'GitHub',
-    url: 'https://github.com/pedrofarinha',
+    url: 'https://github.com/devops-engineer',
     icon: 'FaGithub',
-  },
-  {
-    id: 'email',
-    name: 'Email',
-    url: 'mailto:plfarinha@gmail.com',
-    icon: 'FaEnvelope',
   },
 ];
 

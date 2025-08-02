@@ -2,10 +2,10 @@ import puppeteer from 'puppeteer';
 
 async function verifyDomains() {
   const domains = [
-    'https://pedrofarinha.me',
-    'https://www.pedrofarinha.me',
-    'https://me.pedrofarinha.me',
-    'https://i.pedrofarinha.me'
+    'https://devops-portfolio.me',
+    'https://www.devops-portfolio.me',
+    'https://me.devops-portfolio.me',
+    'https://i.devops-portfolio.me'
   ];
 
   const browser = await puppeteer.launch({
@@ -40,7 +40,7 @@ async function verifyDomains() {
 
       // Check if main content is present
       const content = await page.$eval('body', el => el.textContent);
-      if (!content.includes('Pedro') || !content.includes('DevOps')) {
+      if (!content.includes('DevOps') || !content.includes('Engineer')) {
         throw new Error(`${domain} does not contain expected content`);
       }
 

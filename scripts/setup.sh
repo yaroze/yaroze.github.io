@@ -5,7 +5,7 @@
 
 set -e
 
-echo "🚀 Setting up Pedro Farinha's Portfolio Deployment"
+echo "🚀 Setting up DevOps Portfolio Deployment"
 echo "=================================================="
 
 # Colors for output
@@ -139,7 +139,7 @@ echo "1. Create a new private GitHub repository named 'portfolio'"
 echo "   https://github.com/new"
 echo ""
 echo "2. Add the repository as a remote and push the code:"
-echo "   git remote add origin https://github.com/pedrofarinha/portfolio.git"
+echo "   git remote add origin https://github.com/username/portfolio.git"
 echo "   git branch -M main"
 echo "   git push -u origin main"
 echo ""

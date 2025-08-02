@@ -15,5 +15,5 @@ resource "cloudflare_record" "github_domain_verification_root" {
   type    = "TXT"
   content = "github-domain-verification=yaroze"
   ttl     = 300
-  comment = "GitHub domain verification for pedrofarinha.me"
+  comment = "GitHub domain verification for domain"
 }

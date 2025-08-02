@@ -13,9 +13,9 @@ provider "cloudflare" {
   api_token = var.cloudflare_api_token
 }
 
-# Get the zone ID for pedrofarinha.me
+# Get the zone ID for devops-portfolio.me
 data "cloudflare_zone" "main" {
-  name = "pedrofarinha.me"
+  name = "devops-portfolio.me"
 }
 
 # Root domain A records for GitHub Pages (IPv4)
@@ -101,38 +101,38 @@ resource "cloudflare_record" "root_aaaa4" {
   comment = "GitHub Pages AAAA record 4"
 }
 
-# www subdomain CNAME to pedrofarinha.me (allow overwrite if exists)
+# www subdomain CNAME to devops-portfolio.me (allow overwrite if exists)
 resource "cloudflare_record" "www" {
   zone_id         = data.cloudflare_zone.main.id
   name            = "www"
   type            = "CNAME"
-  content         = "pedrofarinha.me"
+  content         = "devops-portfolio.me"
   proxied         = false
   ttl             = 300
-  comment         = "WWW subdomain pointing to pedrofarinha.me"
+  comment         = "WWW subdomain pointing to devops-portfolio.me"
   allow_overwrite = true
 }
 
-# me subdomain CNAME to pedrofarinha.me
+# me subdomain CNAME to devops-portfolio.me
 resource "cloudflare_record" "me" {
   zone_id = data.cloudflare_zone.main.id
   name    = "me"
   type    = "CNAME"
-  content = "pedrofarinha.me"
+  content = "devops-portfolio.me"
   proxied = false
   ttl     = 300
-  comment = "Me subdomain pointing to pedrofarinha.me"
+  comment = "Me subdomain pointing to devops-portfolio.me"
 }
 
-# i subdomain CNAME to pedrofarinha.me
+# i subdomain CNAME to devops-portfolio.me
 resource "cloudflare_record" "i" {
   zone_id = data.cloudflare_zone.main.id
   name    = "i"
   type    = "CNAME"
-  content = "pedrofarinha.me"
+  content = "devops-portfolio.me"
   proxied = false
   ttl     = 300
-  comment = "I subdomain pointing to pedrofarinha.me"
+  comment = "I subdomain pointing to devops-portfolio.me"
 }
 
 # Note: Page rules and zone settings require higher permission levels

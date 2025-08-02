@@ -46,7 +46,7 @@ fi
 
 # Repository details
 REPO_NAME="portfolio"
-REPO_DESCRIPTION="Pedro Farinha's professional portfolio website - DevOps/Platform Engineer"
+REPO_DESCRIPTION="Professional portfolio website - DevOps/Platform Engineer"
 
 print_step "Creating private GitHub repository..."
 
@@ -199,9 +199,9 @@ echo "   - Wait for DNS propagation (up to 48 hours)"
 echo "   - Test domains: npm run test:domains"
 echo ""
 echo "4. 📊 Your portfolio will be available at:"
-echo "   - https://pedrofarinha.me"
-echo "   - https://www.pedrofarinha.me"
-echo "   - https://me.pedrofarinha.me"
-echo "   - https://i.pedrofarinha.me"
+echo "   - https://your-domain.com"
+echo "   - https://www.your-domain.com"
+echo "   - https://me.your-domain.com"
+echo "   - https://i.your-domain.com"
 echo ""
 print_status "Happy deploying! 🚀"
